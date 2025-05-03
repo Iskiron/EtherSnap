@@ -25,6 +25,26 @@
 
 ---
 
+## 📥 Download EXE
+
+Want to skip setup and use the app directly?
+
+👉 [**Download EtherSnap for Windows (.exe)**](https://github.com/Iskiron/EtherSnap/releases/latest)
+
+- No installation needed
+- Portable `.exe` version
+- ✅ Includes `yt-dlp.exe` and `ffmpeg.exe` (embedded)
+- Just run and start downloading instantly!
+
+> ⚠️ If your browser or Windows Defender warns you, it’s a common false positive for unsigned `.exe` files. The app is safe and open-source.
+
+
+> 📢 **Disclaimer**  
+> This app is intended for **personal and educational use only**. Downloading copyrighted content may violate YouTube’s [Terms of Service](https://www.youtube.com/t/terms).  
+> The developers of EtherSnap are **not responsible** for misuse or legal consequences.
+
+---
+
 ## 🛠️ How to Set Up EtherSnap (For Developers)
 
 ### 1. Clone the Repository
@@ -135,7 +155,7 @@ Please ensure your code is **clean**, **tested**, and **well-documented**.
 
 ## 📫 Contact
 
-Made with ❤️ by **Iskiron**  
+Made by **Iskiron**  
 🔗 [LinkedIn](https://www.linkedin.com/in/abhijeetydv) 
 
 ---
