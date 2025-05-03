@@ -100,8 +100,10 @@ See the [LICENSE](./LICENSE) file for full details.
 
 ### Included Dependencies
 
-- [**yt-dlp**](https://github.com/yt-dlp/yt-dlp) – Unlicense License  
-- [**FFmpeg**](https://ffmpeg.org/) – Licensed under GNU **LGPL** or **GPL**, depending on build.  
+- [**yt-dlp**](https://github.com/yt-dlp/yt-dlp) – Licensed under the [Unlicense License](https://unlicense.org/).  
+  Full license details in the [yt-dlp-LICENSE.txt](./third_party_licenses/yt-dlp-LICENSE.txt). 
+- [**FFmpeg**](https://ffmpeg.org/) – Licensed under the [GNU LGPL or GPL](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html), depending on the build.  
+  Full license details in the [ffmpeg-LICENSE.txt](./third_party_licenses/ffmpeg-LICENSE.txt).
   EtherSnap uses the [Windows build from Gyan.dev](https://www.gyan.dev/ffmpeg/builds/), which is usually **LGPL-compliant**.
 
 > ❗ You must retain and mention the licenses of all third-party binaries included or used in this app when redistributing.
