@@ -1,0 +1,3 @@
+yt-dlp is licensed under the Unlicense License. 
+
+Link: https://unlicense.org/

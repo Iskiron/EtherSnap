@@ -1,0 +1,3 @@
+FFmpeg is licensed under the GNU LGPL or GPL depending on the build.
+
+Link: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
