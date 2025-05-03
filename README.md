@@ -30,14 +30,16 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/EtherSnap.git
+git clone https://github.com/Iskiron/EtherSnap.git
 cd EtherSnap
 ```
 
 ### 2. Install Requirements
 
+Make sure Python 3.8+ is installed.
+
 ```bash
-pip install -r requirements.txt
+pip install pyqt5 yt-dlp pyperclip
 ```
 
 ### 3. Download & Setup FFmpeg
@@ -52,7 +54,7 @@ Your folder structure should look like:
 /EtherSnap
   ├── EtherSnap.py
   ├── ffmpeg.exe
-  ├── requirements.txt
+  ├── EtherSnap.ico
   └── ...
 ```
 
@@ -75,11 +77,7 @@ pip install pyinstaller
 ### Build the Executable
 
 ```bash
-pyinstaller --noconfirm --onefile --windowed ^
-  --icon=EtherSnap.ico ^
-  --add-binary "ffmpeg.exe;." ^
-  --add-data "assets;assets" ^
-  EtherSnap.py
+pyinstaller --onefile --windowed --icon=EtherSnap.ico --add-binary "ffmpeg.exe;." EtherSnap.py
 ```
 
 This will generate a `dist/EtherSnap.exe` file you can run directly.
@@ -92,7 +90,6 @@ This will generate a `dist/EtherSnap.exe` file you can run directly.
 |-----------|-------------|
 | ![Home](assets/screenshots/home.png) | ![Downloading](assets/screenshots/downloading.png) |
 
-> _Make sure to place actual screenshot images in the `assets/screenshots` folder._
 
 ---
 
@@ -137,6 +134,6 @@ Please ensure your code is **clean**, **tested**, and **well-documented**.
 ## 📫 Contact
 
 Made with ❤️ by **Your Name**  
-🔗 [LinkedIn](https://linkedin.com/in/yourprofile) · 📧 your.email@example.com
+🔗 [LinkedIn](https://www.linkedin.com/in/abhijeetydv/) · 📧 [Support Email](abhijeetydv410@gmail.com.com)
 
 ---
