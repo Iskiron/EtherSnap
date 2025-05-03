@@ -31,19 +31,23 @@ class DownloadThread(QThread):
 
     def run(self):
         CREATE_NO_WINDOW = 0x08000000 if sys.platform == "win32" else 0
-        self.process = subprocess.Popen(
-            self.cmd,
-            env=self.env,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            creationflags=CREATE_NO_WINDOW,
-            universal_newlines=True,
-        )
+        try:
+            self.process = subprocess.Popen(
+                self.cmd,
+                env=self.env,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                creationflags=CREATE_NO_WINDOW,
+                universal_newlines=True,
+            )
 
-        for line in self.process.stdout:
-            self.progress.emit(line.strip())
+            for line in self.process.stdout:
+                self.progress.emit(line.strip())
+        except Exception as e:
+            self.progress.emit(f"Error: {str(e)}")
 
         self.done.emit()
+
 
     def stop(self):
         if self.process:
@@ -150,12 +154,24 @@ class YouTubeDownloader(QWidget):
     def get_quality_option(self):
         quality = self.quality_box.currentText()
         if quality == "best":
-            return []
-        return ["-f", f"bestvideo[height<={quality[:-1]}]+bestaudio/best"]
+            return ["-f", "bestvideo+bestaudio"]
+        elif quality == "720p":
+            return ["-f", "bestvideo[height<=720]+bestaudio/best"]
+        elif quality == "480p":
+            return ["-f", "bestvideo[height<=480]+bestaudio/best"]
+        elif quality == "360p":
+            return ["-f", "bestvideo[height<=360]+bestaudio/best"]
+
 
     def run_command(self, cmd):
         env = os.environ.copy()
-        env["PATH"] = f"{os.path.dirname(self.ffmpeg_path)};{env['PATH']}"
+
+        # Add directory of both ffmpeg.exe and yt-dlp.exe to PATH
+        bin_dir = os.path.dirname(self.ffmpeg_path)
+        env["PATH"] = f"{bin_dir};{env['PATH']}"
+
+        print(f"Running command: {' '.join(cmd)}")  # <-- helpful for debugging
+        print(f"Using env PATH: {env['PATH']}")     # <-- shows actual path used
 
         self.worker = DownloadThread(cmd, env)
         self.worker.progress.connect(self.update_progress)
@@ -163,25 +179,37 @@ class YouTubeDownloader(QWidget):
         self.worker.start()
         self.cancel_btn.setEnabled(True)
 
+
     def download_video(self):
         url = self.url_input.text()
         if url:
             self.status.setText("Downloading video...")
             QApplication.processEvents()
-            cmd = ["yt-dlp", *self.get_quality_option()]
+            yt_dlp_path = self.resource_path("yt-dlp.exe")
+            
+            # Ensure the video and audio are selected
+            cmd = [yt_dlp_path, *self.get_quality_option()]
+
+            # Playlist options
             if self.playlist_checkbox.isChecked():
                 cmd.append("--yes-playlist")
             else:
                 cmd.append("--no-playlist")
+            
+            # Output file and URL
             cmd += ["-o", f"{self.download_folder}/%(title)s.%(ext)s", url]
+            
+            # Run the command
             self.run_command(cmd)
+
 
     def download_audio(self):
         url = self.url_input.text()
         if url:
             self.status.setText("Downloading audio...")
             QApplication.processEvents()
-            cmd = ["yt-dlp", "-x", "--audio-format", "mp3"]
+            yt_dlp_path = self.resource_path("yt-dlp.exe")
+            cmd = [yt_dlp_path, "-x", "--audio-format", "mp3"]
             if self.playlist_checkbox.isChecked():
                 cmd.append("--yes-playlist")
             else:
