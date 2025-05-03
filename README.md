@@ -134,6 +134,6 @@ Please ensure your code is **clean**, **tested**, and **well-documented**.
 ## 📫 Contact
 
 Made with ❤️ by **Your Name**  
-🔗 [LinkedIn](https://www.linkedin.com/in/abhijeetydv/) · 📧 [Support Email](abhijeetydv410@gmail.com.com)
+🔗 [LinkedIn](https://www.linkedin.com/in/abhijeetydv) 
 
 ---
