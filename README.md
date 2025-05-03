@@ -59,7 +59,7 @@ cd EtherSnap
 Make sure Python 3.8+ is installed.
 
 ```bash
-pip install pyqt5 yt-dlp pyperclip
+pip install pyqt5 pyperclip
 ```
 
 ### 3. Download & Setup FFmpeg
@@ -68,17 +68,24 @@ pip install pyqt5 yt-dlp pyperclip
 2. Download **`ffmpeg-release-essentials.zip`** (Windows builds)
 3. Extract it and place the `ffmpeg.exe` (from `bin/`) into the root directory of this project.
 
+### 4. Download & Setup yt-dlp
+
+1. Go to the official [yt-dlp GitHub Releases](https://github.com/yt-dlp/yt-dlp/releases)
+2. Download the latest **`yt-dlp.exe`** for Windows
+3. Place the `yt-dlp.exe` into the root directory of this project (same folder as your `EtherSnap.py`)
+
 Your folder structure should look like:
 
 ```
 /EtherSnap
-  ├── EtherSnap.py
-  ├── ffmpeg.exe
-  ├── EtherSnap.ico
-  └── ...
+├── EtherSnap.py
+├── ffmpeg.exe
+├── yt-dlp.exe
+├── EtherSnap.ico
+└── ...
 ```
 
-### 4. Run the App
+### 5. Run the App
 
 ```bash
 python EtherSnap.py
@@ -97,7 +104,7 @@ pip install pyinstaller
 ### Build the Executable
 
 ```bash
-pyinstaller --onefile --windowed --icon=EtherSnap.ico --add-binary "ffmpeg.exe;." EtherSnap.py
+ pyinstaller --onefile --windowed --icon=EtherSnap.ico --add-binary "ffmpeg.exe;." --add-binary "yt-dlp.exe;." --add-data "icon.png;." EtherSnap.py
 ```
 
 This will generate a `dist/EtherSnap.exe` file you can run directly.
